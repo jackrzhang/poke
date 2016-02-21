@@ -1,21 +1,6 @@
 var score = 48;
 
-$(document).ready(function() {
-    (ballActor).start(initialize);
-    prepareConfetti();
-});
-
-$(window).resize(function() {
-    ballActor.start(resize);
-    resizeConfetti();
-});
-
-$((ballActor).element).on('mousedown touchstart', ballActor.element, function() {
-
-    ballActor.start(poke);
-
-    // increase score, update view
-    score++;
+function updateView(score) {
     document.getElementById("score-num").innerHTML = score;
 
     if (score < 49) {
@@ -28,5 +13,22 @@ $((ballActor).element).on('mousedown touchstart', ballActor.element, function() 
         $(canvas).fadeIn('5000');
         document.getElementById("score-status").innerHTML = "You've won! Congratulations!";
     }
+}
 
+$(document).ready(function() {
+    (ballActor).start(initialize);
+    prepareConfetti();
+});
+
+$(window).resize(function() {
+    ballActor.start(resize);
+    resizeConfetti();
+});
+
+$((ballActor).element).on('mousedown touchstart', ballActor.element, function() {
+    ballActor.start(poke);
+
+    // increase score, update view
+    score++;
+    updateView(score);
 });
