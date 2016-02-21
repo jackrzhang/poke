@@ -1,4 +1,5 @@
 var score = 0;
+var simulation;
 
 function updateView(score) {
     document.getElementById("score-num").innerHTML = score;
@@ -16,17 +17,19 @@ function updateView(score) {
 }
 
 $(document).ready(function() {
-    (ballActor).start(initialize);
+    ballActor.start(initialize);
     prepareConfetti();
 });
 
 $(window).resize(function() {
-    ballActor.start(resize);
+    simulation = newResize()
+    ballActor.start(simulation);
     resizeConfetti();
 });
 
-$((ballActor).element).on('mousedown touchstart', ballActor.element, function() {
-    ballActor.start(poke);
+$(ballActor.element).on('mousedown touchstart', ballActor.element, function() {
+    simulation = newPoke();
+    ballActor.start(simulation);
 
     // increase score, update view
     score++;
