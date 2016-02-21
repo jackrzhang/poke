@@ -1,4 +1,4 @@
-var score = 48;
+var score = 0;
 
 function updateView(score) {
     document.getElementById("score-num").innerHTML = score;
