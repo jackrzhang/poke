@@ -1,43 +1,13 @@
 var canvas;
 var ctx;
 var confettiHandler;
+
 //canvas dimensions
 var W;
 var H;
+
 var mp = 100; //max particles
 var particles = [];
-
-$(window).resize(function () {
-    canvas = document.getElementById("canvas");
-    //canvas dimensions
-    W = $(".ball-area").width();
-    H = $(".ball-area").height();
-    canvas.width = $(".ball-area").width();
-    canvas.height = $(".ball-area").height();;
-});
-$(document).ready(function () {
-    canvas = document.getElementById("canvas");
-    ctx = canvas.getContext("2d");
-    //canvas dimensions
-    W = $(".ball-area").width();
-    H = $(".ball-area").height();
-    canvas.width = W;
-    canvas.height = H;
-
-    for (var i = 0; i < mp; i++) {
-        particles.push({
-            x: Math.random() * W, //x-coordinate
-            y: Math.random() * H, //y-coordinate
-            r: randomFromTo(5, 30), //radius
-            d: (Math.random() * mp) + 10, //density
-            color: "rgba(" + Math.floor((Math.random() * 255)) + ", " + Math.floor((Math.random() * 255)) + ", " + Math.floor((Math.random() * 255)) + ", 0.7)",
-            tilt: Math.floor(Math.random() * 10) - 10,
-            tiltAngleIncremental: (Math.random() * 0.07) + .05,
-            tiltAngle: 0
-        });
-    }
-});
-
 
 function draw() {
     ctx.clearRect(0, 0, W, H);
@@ -100,6 +70,36 @@ function update() {
     }
 }
 
+function prepareConfetti() {
+    canvas = document.getElementById("canvas");
+    ctx = canvas.getContext("2d");
+    W = $(".ball-area").width();
+    H = $(".ball-area").height();
+    canvas.width = W;
+    canvas.height = H;
+
+    for (var i = 0; i < mp; i++) {
+        particles.push({
+            x: Math.random() * W, //x-coordinate
+            y: Math.random() * H, //y-coordinate
+            r: randomFromTo(5, 30), //radius
+            d: (Math.random() * mp) + 10, //density
+            color: "rgba(" + Math.floor((Math.random() * 255)) + ", " + Math.floor((Math.random() * 255)) + ", " + Math.floor((Math.random() * 255)) + ", 0.7)",
+            tilt: Math.floor(Math.random() * 10) - 10,
+            tiltAngleIncremental: (Math.random() * 0.07) + .05,
+            tiltAngle: 0
+        });
+    }
+}
+
+function resizeConfetti() {
+    canvas = document.getElementById("canvas");
+    W = $(".ball-area").width();
+    H = $(".ball-area").height();
+    canvas.width = $(".ball-area").width();
+    canvas.height = $(".ball-area").height();
+}
+
 function StartConfetti() {
     W = $(".ball-area").width();
     H = $(".ball-area").height();
@@ -113,4 +113,3 @@ function StopConfetti() {
     if (ctx == undefined) return;
     ctx.clearRect(0, 0, W, H);
 }
-//animation loop
