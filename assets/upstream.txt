@@ -1,0 +1,13 @@
+Project: Poke
+Date: 160219
+Author: jackrzhang
+
+GAME DEFINITION:
+1) A single ball. Poke it 50 times to win.
+2) Confetti celebration when the user wins.
+3) Cat paw cursor.
+
+IMPLEMENTATION DETAILS:
+1) Use Popmotion for ball physics and animation.
+2) Mobile-first, responsive design.
+3) Experiment with CSS radial-gradient to style ball.
