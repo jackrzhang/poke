@@ -1,5 +1,5 @@
 # poke
-A game for cats and incredibly bored humans alike. Poke the ball 50 times to win.
+Poke the ball 50 times to win.
 
 #### tools:
 1. Physics and animation handled through [Popmotion](https://github.com/Popmotion/popmotion).
