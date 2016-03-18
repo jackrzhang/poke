@@ -18,13 +18,19 @@ function updateView(score) {
 
 $(document).ready(function() {
     ballActor.start(initialize);
-    prepareConfetti();
+
+    if (typeof document.createElement('canvas').getContext === "function") {
+        prepareConfetti();
+    }
 });
 
 $(window).resize(function() {
     simulation = newResize()
     ballActor.start(simulation);
-    resizeConfetti();
+
+    if (typeof document.createElement('canvas').getContext === "function") {
+        resizeConfetti();
+    }
 });
 
 $(ballActor.element).on('mousedown touchstart', ballActor.element, function() {

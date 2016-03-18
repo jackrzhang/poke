@@ -1,3 +1,5 @@
+// 
+
 var canvas;
 var ctx;
 var confettiHandler;
